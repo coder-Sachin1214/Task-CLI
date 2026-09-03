@@ -6,7 +6,7 @@ import { FileUtils } from "./Services/FileUtils.js";
 const [, , command, ...rest] = process.argv;
 
 function parseStatus(status: string) {
-    if (typeof (status) !== 'string') throw Error("Status is not Provided. Please Enter the task!!");
+    if (typeof (status) !== 'string') throw Error("Status is not Provided. Please Enter the Status!!");
     if (!Object.values(Status).includes(status as unknown as Status)) {
         throw Error(`${status} is NOT a valid Status.`);
     }
@@ -24,7 +24,7 @@ switch (command) {
     }
     case 'update': {
         if (typeof (rest[0]) === 'undefined') throw Error("Task ID is not Provided. Please Enter the task ID!!")
-        if (typeof (rest[1]) === 'undefined') throw Error("task is not Provided. Please Enter the task!!")
+        if (typeof (rest[1]) === 'undefined') throw Error("Task is not Provided. Please Enter the task!!")
         let taskid: number = parseInt(rest[0]);
         let task: string = rest[1];
         await FileUtils.UpdateIntoFile(taskid, task);
